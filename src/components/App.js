@@ -42,10 +42,11 @@ const App = () => {
   return (
     <>
       <Slides currSlide={currSlide} />
-
-      <button data-testid="button-restart" onClick={restart}>
-        Restart
-      </button>
+      {(index === 1 && first) || index === 0 ? (
+        <button data-testid="button-restart" onClick={restart}>
+          Restart
+        </button>
+      ) : null}
 
       {(index === 1 && first) || index === 0 ? null : (
         <button data-testid="button-prev" onClick={showPrev}>
