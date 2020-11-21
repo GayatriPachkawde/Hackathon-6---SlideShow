@@ -1,6 +1,6 @@
 import React, { Component, useState } from "react";
 import "../styles/App.css";
-import Slides from "./Slides";
+//import Slides from "./Slides";
 //import slides from "../data";
 
 //const slidesArr = [...slides];
@@ -18,8 +18,6 @@ const App = (props) => {
     currIndex++;
     setIndex(currIndex);
     setCurrSlideState(slidesArr[index]);
-
-    console.log(index);
   };
 
   const showPrev = () => {
@@ -42,7 +40,9 @@ const App = (props) => {
   };
   return (
     <>
-      <Slides currSlide={currSlide} />
+      <h1 data-testid="title">{currSlide.title}</h1>
+      <p data-testid="text">{currSlide.text}</p>
+      {/* //<Slides currSlide={currSlide} /> */}
       {(index === 1 && first) || index === 0 ? (
         <button disabled={true} data-testid="button-restart" onClick={restart}>
           Restart
@@ -52,7 +52,6 @@ const App = (props) => {
           Restart
         </button>
       )}
-
       {(index === 1 && first) || index === 0 ? (
         <button disabled={true} data-testid="button-prev" onClick={showPrev}>
           Prev
@@ -62,7 +61,6 @@ const App = (props) => {
           Prev
         </button>
       )}
-
       {index === 5 ? (
         <button disabled={true} data-testid="button-next" onClick={showNext}>
           Next
