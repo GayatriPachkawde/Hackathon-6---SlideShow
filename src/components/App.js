@@ -1,11 +1,13 @@
 import React, { Component, useState } from "react";
 import "../styles/App.css";
 import Slides from "./Slides";
-import slides from "../data";
+//import slides from "../data";
 
-const slidesArr = [...slides];
-const initialState = slidesArr[0];
-const App = () => {
+//const slidesArr = [...slides];
+
+const App = (props) => {
+  const slidesArr = props.slides;
+  const initialState = slidesArr[0];
   const [currSlide, setCurrSlideState] = useState(initialState);
   const [index, setIndex] = useState(1);
 
@@ -26,7 +28,6 @@ const App = () => {
       first ? (currIndex = index - 2) : (currIndex = index - 1);
     }
 
-    console.log(currIndex);
     setIndex(currIndex);
     setCurrSlideState(slidesArr[currIndex]);
     setFirst(false);
