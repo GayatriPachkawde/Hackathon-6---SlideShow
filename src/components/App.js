@@ -43,18 +43,30 @@ const App = () => {
     <>
       <Slides currSlide={currSlide} />
       {(index === 1 && first) || index === 0 ? (
+        <button disabled={true} data-testid="button-restart" onClick={restart}>
+          Restart
+        </button>
+      ) : (
         <button data-testid="button-restart" onClick={restart}>
           Restart
         </button>
-      ) : null}
+      )}
 
-      {(index === 1 && first) || index === 0 ? null : (
+      {(index === 1 && first) || index === 0 ? (
+        <button disabled={true} data-testid="button-prev" onClick={showPrev}>
+          Prev
+        </button>
+      ) : (
         <button data-testid="button-prev" onClick={showPrev}>
           Prev
         </button>
       )}
 
-      {index === 5 ? null : (
+      {index === 5 ? (
+        <button disabled={true} data-testid="button-next" onClick={showNext}>
+          Next
+        </button>
+      ) : (
         <button data-testid="button-next" onClick={showNext}>
           Next
         </button>
