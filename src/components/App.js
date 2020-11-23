@@ -1,5 +1,4 @@
 import React, { Component, useState } from "react";
-import slides from "../data";
 import "../styles/App.css";
 let index = 0;
 const App = (props) => {
