@@ -22,7 +22,7 @@ const App = (props) => {
   return (
     <>
       <button
-        disabled={index === 0 ? true : false}
+        disabled={index === 0}
         data-testid="button-restart"
         onClick={restart}
       >
@@ -30,7 +30,7 @@ const App = (props) => {
       </button>
 
       <button
-        disabled={index === 0 ? true : false}
+        disabled={index === 0}
         data-testid="button-prev"
         onClick={showPrev}
       >
@@ -38,7 +38,7 @@ const App = (props) => {
       </button>
 
       <button
-        disabled={index === 4 ? true : false}
+        disabled={index === 4}
         data-testid="button-next"
         onClick={showNext}
       >
