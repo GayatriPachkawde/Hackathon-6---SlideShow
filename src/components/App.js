@@ -22,9 +22,6 @@ const App = (props) => {
 
   return (
     <>
-      <h1 data-testid="title">{slide.title}</h1>
-      <p data-testid="text">{slide.text}</p>
-
       <button
         disabled={index === 0 ? true : false}
         data-testid="button-restart"
@@ -48,6 +45,9 @@ const App = (props) => {
       >
         Next
       </button>
+
+      <h1 data-testid="title">{slide.title}</h1>
+      <p data-testid="text">{slide.text}</p>
     </>
   );
 };
