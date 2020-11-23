@@ -24,33 +24,30 @@ const App = (props) => {
     <>
       <h1 data-testid="title">{slide.title}</h1>
       <p data-testid="text">{slide.text}</p>
-      {index === 0 ? (
-        <button disabled={true} data-testid="button-restart" onClick={restart}>
-          Restart
-        </button>
-      ) : (
-        <button data-testid="button-restart" onClick={restart}>
-          Restart
-        </button>
-      )}
-      {index === 0 ? (
-        <button disabled={true} data-testid="button-prev" onClick={showPrev}>
-          Prev
-        </button>
-      ) : (
-        <button data-testid="button-prev" onClick={showPrev}>
-          Prev
-        </button>
-      )}
-      {index === 4 ? (
-        <button disabled={true} data-testid="button-next" onClick={showNext}>
-          Next
-        </button>
-      ) : (
-        <button data-testid="button-next" onClick={showNext}>
-          Next
-        </button>
-      )}
+
+      <button
+        disabled={index === 0 ? true : false}
+        data-testid="button-restart"
+        onClick={restart}
+      >
+        Restart
+      </button>
+
+      <button
+        disabled={index === 0 ? true : false}
+        data-testid="button-prev"
+        onClick={showPrev}
+      >
+        Prev
+      </button>
+
+      <button
+        disabled={index === 4 ? true : false}
+        data-testid="button-next"
+        onClick={showNext}
+      >
+        Next
+      </button>
     </>
   );
 };
