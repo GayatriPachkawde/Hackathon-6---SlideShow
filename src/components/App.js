@@ -1,58 +1,31 @@
 import React, { Component, useState } from "react";
+import slides from "../data";
 import "../styles/App.css";
-//import Slides from "./Slides";
-//import slides from "../data";
-
-//const slidesArr = [...slides];
-
+let index = 0;
 const App = (props) => {
-  const slidesArr = props.slides;
-  const initialState = slidesArr[0];
-  const [currSlide, setCurrSlideState] = useState(initialState);
-  const [index, setIndex] = useState(1);
-
-  const [first, setFirst] = useState(true);
+  const [slide, setSlide] = useState(props.slides[0]);
 
   const showNext = () => {
-    let currIndex = index;
-    currIndex++;
-    setIndex(currIndex);
-    setCurrSlideState(slidesArr[index]);
+    index = index + 1;
+    setSlide(props.slides[index]);
   };
 
   const showPrev = () => {
-    let currIndex;
-    {
-      first ? (currIndex = index - 2) : (currIndex = index - 1);
-    }
-
-    setIndex(currIndex);
-    setCurrSlideState(slidesArr[currIndex]);
-    setFirst(false);
+    index = index - 1;
+    setSlide(props.slides[index]);
   };
 
   const restart = () => {
-    setIndex(1);
-
-    setCurrSlideState(initialState);
-
-    setFirst(true);
+    index = 0;
+    setSlide(props.slides[index]);
   };
+
   return (
     <>
-      <h1 data-testid="title">{currSlide.title}</h1>
-      <p data-testid="text">{currSlide.text}</p>
-      {/* //<Slides currSlide={currSlide} /> */}
-      {(index === 1 && first) || index === 0 ? (
-        <button disabled={true} data-testid="button-restart" onClick={restart}>
-          Restart
-        </button>
-      ) : (
-        <button data-testid="button-restart" onClick={restart}>
-          Restart
-        </button>
-      )}
-      {(index === 1 && first) || index === 0 ? (
+      <h1 data-testid="title">{slide.title}</h1>
+      <p data-testid="text">{slide.text}</p>
+
+      {index === 0 ? (
         <button disabled={true} data-testid="button-prev" onClick={showPrev}>
           Prev
         </button>
@@ -61,7 +34,18 @@ const App = (props) => {
           Prev
         </button>
       )}
-      {index === 5 ? (
+
+      {index === 0 ? (
+        <button disabled={true} data-testid="button-restart" onClick={restart}>
+          Restart
+        </button>
+      ) : (
+        <button data-testid="button-restart" onClick={restart}>
+          Restart
+        </button>
+      )}
+
+      {index === 4 ? (
         <button disabled={true} data-testid="button-next" onClick={showNext}>
           Next
         </button>
