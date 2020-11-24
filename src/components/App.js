@@ -1,41 +1,51 @@
 import React, { Component, useState } from "react";
+import slides from "../data";
 import "../styles/App.css";
-
+let index = 0;
 const App = (props) => {
-  const [ind, setind] = useState(0);
+  const [slide, setSlide] = useState(props.slides[0]);
 
   const showNext = () => {
-    //ind = ind + 1;
-    setind(ind + 1);
+    index = index + 1;
+    setSlide(props.slides[index]);
   };
 
   const showPrev = () => {
-    //ind = ind - 1;
-    setind(ind - 1);
+    index = index - 1;
+    setSlide(props.slides[index]);
   };
 
   const restart = () => {
-    //ind = 0;
-    setind(0);
+    index = 0;
+    setSlide(props.slides[index]);
   };
 
   return (
     <>
-      <h1 data-testid="title">{props.slides[ind].title}</h1>
-      <p data-testid="text">{props.slides[ind].text}</p>
+      <h1 data-testid="title">{slide.title}</h1>
+      <p data-testid="text">{slide.text}</p>
+
       <button
-        disabled={ind === 0}
+        disabled={index === 0}
         data-testid="button-restart"
         onClick={restart}
       >
         Restart
       </button>
 
-      <button disabled={ind === 0} data-testid="button-prev" onClick={showPrev}>
+      <button
+        disabled={index === 0}
+        data-testid="button-prev"
+        onClick={showPrev}
+      >
         Prev
       </button>
 
-      <button disabled={ind === 4} data-testid="button-next" onClick={showNext}>
+      <button
+        disabled={index === 4}
+        data-testid="button-next"
+        onClick={showNext}
+      >
         Next
       </button>
     </>
