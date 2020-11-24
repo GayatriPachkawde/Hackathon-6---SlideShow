@@ -1,5 +1,4 @@
 import React, { Component, useState } from "react";
-import slides from "../data";
 import "../styles/App.css";
 let index = 0;
 const App = (props) => {
@@ -42,7 +41,7 @@ const App = (props) => {
       </button>
 
       <button
-        disabled={index === 4}
+        disabled={index === props.slides.length - 1}
         data-testid="button-next"
         onClick={showNext}
       >
