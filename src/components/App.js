@@ -1,53 +1,40 @@
 import React, { Component, useState } from "react";
 import "../styles/App.css";
-let index = 0;
+import slides from "../data";
+
 const App = (props) => {
-  const [slide, setSlide] = useState(props.slides[0]);
-
-  const showNext = () => {
-    index = index + 1;
-    setSlide(props.slides[index]);
-  };
-
-  const showPrev = () => {
-    index = index - 1;
-    setSlide(props.slides[index]);
-  };
-
-  const restart = () => {
-    index = 0;
-    setSlide(props.slides[index]);
-  };
+  const [index, setIndex] = useState(0);
 
   return (
-    <>
-      <h1 data-testid="title">{slide.title}</h1>
-      <p data-testid="text">{slide.text}</p>
-
+    <div>
+      <h1 data-testid="title">{props.slides[index].title}</h1>
+      <p data-testid="text">{props.slides[index].text}</p>
       <button
-        disabled={index === 0}
         data-testid="button-restart"
-        onClick={restart}
+        disabled={index === 0}
+        onClick={() => setIndex(0)}
       >
         Restart
       </button>
-
       <button
-        disabled={index === 0}
         data-testid="button-prev"
-        onClick={showPrev}
+        disabled={index === 0}
+        onClick={() => {
+          if (index > 0) setIndex(index - 1);
+        }}
       >
         Prev
       </button>
-
       <button
-        disabled={index === props.slides.length - 1}
         data-testid="button-next"
-        onClick={showNext}
+        disabled={index === props.slides.length - 1}
+        onClick={() => {
+          if (index < props.slides.length - 1) setIndex(index + 1);
+        }}
       >
         Next
       </button>
-    </>
+    </div>
   );
 };
 
